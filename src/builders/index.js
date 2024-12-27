@@ -1,9 +1,9 @@
-const _ = require('lodash')
-const HttpZError = require('../error')
-const RequestBuilder = require('./request')
-const ResponseBuilder = require('./response')
+import _ from 'lodash'
+import HttpZError from '../error.js'
+import RequestBuilder from './request.js'
+import ResponseBuilder from './response.js'
 
-module.exports = (messageModel, opts = {}) => {
+export default (messageModel, opts = {}) => {
   if (_.isNil(messageModel)) {
     throw HttpZError.get('messageModel is required')
   }

@@ -1,9 +1,9 @@
-const _ = require('lodash')
-const consts = require('../consts')
-const utils = require('../utils')
-const HttpZError = require('../error')
+import _ from 'lodash'
+import * as consts from '../consts.js'
+import * as utils from '../utils.js'
+import HttpZError from '../error.js'
 
-class FormDataParamParser {
+export default class FormDataParamParser {
   // TODO: test it
   static parse(...params) {
     let instance = new FormDataParamParser(...params)
@@ -101,5 +101,3 @@ class FormDataParamParser {
     return value
   }
 }
-
-module.exports = FormDataParamParser

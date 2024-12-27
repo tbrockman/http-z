@@ -1,13 +1,13 @@
-const _ = require('lodash')
-const sinon = require('sinon')
-const should = require('should')
-const nassert = require('n-assert')
-const HttpZConsts = require('../../src/consts')
-const HttpZError = require('../../src/error')
-const ResponseBuilder = require('../../src/builders/response')
+import _ from 'lodash'
+import sinon from 'sinon'
+import should from 'should'
+import nassert from 'n-assert'
+import * as HttpZConsts from '../../src/consts.js'
+import HttpZError from '../../src/error.js'
+import ResponseBuilder from '../../src/builders/response.js'
 
 describe('builders / response', () => {
-  function getBuilderInstance(exResponseModel) {
+  function getBuilderInstance(exResponseModel?: any) {
     let responseModel = _.extend(
       {
         protocolVersion: 'HTTP/1.1',
@@ -25,13 +25,14 @@ describe('builders / response', () => {
     })
 
     afterEach(() => {
+      //@ts-ignore
       ResponseBuilder.prototype.build.restore()
     })
 
     it('should create instance of ResponseBuilder and call instance.build', () => {
       let model = {}
       let expected = 'ok'
-
+      //@ts-ignore
       ResponseBuilder.prototype.build.returns('ok')
 
       let actual = ResponseBuilder.build(model)

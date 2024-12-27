@@ -1,11 +1,11 @@
-const sinon = require('sinon')
-const should = require('should')
-const nassert = require('n-assert')
-const HttpZConsts = require('../../src/consts')
-const HttpZError = require('../../src/error')
-const parser = require('../../src/parsers')
-const RequestParser = require('../../src/parsers/request')
-const ResponseParser = require('../../src/parsers/response')
+import sinon from 'sinon';
+import should from 'should';
+import nassert from 'n-assert';
+import * as HttpZConsts from '../../src/consts';
+import HttpZError from '../../src/error';
+import parser from '../../src/parsers';
+import RequestParser from '../../src/parsers/request';
+import ResponseParser from '../../src/parsers/response';
 
 describe('parsers / index', () => {
   beforeEach(() => {

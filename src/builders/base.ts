@@ -1,9 +1,12 @@
-const _ = require('lodash')
-const consts = require('../consts')
-const utils = require('../utils')
-const validators = require('../validators')
+import _ from 'lodash';
+import * as consts from '../consts.js';
+import * as utils from '../utils.js';
+import * as validators from '../validators.js';
 
-class HttpZBaseBuilder {
+export default class HttpZBaseBuilder {
+  headers: any;
+  body: any;
+
   constructor({ headers, body }) {
     this.headers = headers
     this.body = body
@@ -120,5 +123,3 @@ class HttpZBaseBuilder {
     return utils.getEmptyStringForUndefined(this.body.text)
   }
 }
-
-module.exports = HttpZBaseBuilder

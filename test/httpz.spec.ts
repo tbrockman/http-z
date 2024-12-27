@@ -1,5 +1,5 @@
-const should = require('should')
-const httpZ = require('../')
+import should from 'should'
+import * as httpZ from '../index.js'
 
 describe('httpz', () => {
   it('should httpz.consts be an object', () => {

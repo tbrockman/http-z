@@ -1,10 +1,10 @@
-const _ = require('lodash')
-const consts = require('../consts')
-const HttpZError = require('../error')
-const utils = require('../utils')
-const Base = require('./base')
+import _ from 'lodash'
+import * as consts from '../consts.js'
+import HttpZError from '../error'
+import * as utils from '../utils.js'
+import Base from './base.js'
 
-class HttpZResponseParser extends Base {
+export default class HttpZResponseParser extends Base {
   static parse(...params) {
     let instance = new HttpZResponseParser(...params)
     return instance.parse()
@@ -98,5 +98,3 @@ class HttpZResponseParser extends Base {
     return model
   }
 }
-
-module.exports = HttpZResponseParser

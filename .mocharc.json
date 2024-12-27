@@ -1,6 +1,12 @@
 {
-    "require": "test/index.js",
+    "require": "test/index.ts",
     "ui": "bdd",
     "reporter": "dot",
-    "recursive": true
+    "recursive": true,
+    "spec": "test/**/*.spec.ts",
+    "timeout": 10000,
+    "exit": true,
+    "extension": [
+        "ts"
+    ]
 }

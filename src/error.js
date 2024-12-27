@@ -1,4 +1,4 @@
-module.exports = class HttpZError extends Error {
+export default class HttpZError extends Error {
   static get(...params) {
     return new HttpZError(...params)
   }

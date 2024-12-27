@@ -5,7 +5,7 @@ const PARAM_NAME = '[A-Za-z0-9_.\\[\\]-]' // TODO: extend
 const HTTP_METHODS = '(CONNECT|OPTIONS|TRACE|GET|HEAD|POST|PUT|PATCH|DELETE)'
 const HTTP_PROTOCOL_VERSIONS = '(HTTP)\\/(1\\.0|1\\.1|2(\\.0){0,1})'
 
-const regexps = {}
+const regexps: Record<string, RegExp> = {}
 regexps.quote = /"/g
 regexps.startNl = new RegExp(`^${EOL}`)
 regexps.endNl = new RegExp(`${EOL}$`)
@@ -24,7 +24,7 @@ regexps.dispositionName = new RegExp(`(?<=name=)"${PARAM_NAME}+"`, 'i')
 regexps.dispositionFileName = new RegExp(`(?<=filename=)"${PARAM_NAME}+"`, 'i')
 regexps.chunkRow = new RegExp(`^\\d+${EOL}`)
 
-const http = {}
+const http: any = {}
 
 http.protocols = {
   http: 'HTTP',
@@ -109,7 +109,7 @@ http.headers = {
   transferEncoding: 'Transfer-Encoding'
 }
 
-module.exports = {
+export {
   EOL,
   EOL2X,
   regexps,

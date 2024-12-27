@@ -1,10 +1,10 @@
-const _ = require('lodash')
-const consts = require('../consts')
-const HttpZError = require('../error')
-const utils = require('../utils')
-const formDataParamParser = require('./form-data-param-parser')
+import _ from 'lodash'
+import * as consts from '../consts.js'
+import HttpZError from '../error.js'
+import * as utils from '../utils.js'
+import formDataParamParser from './form-data-param-parser.js'
 
-class HttpZBaseParser {
+export default class HttpZBaseParser {
   constructor(rawMessage) {
     this.rawMessage = rawMessage
   }
@@ -159,5 +159,3 @@ class HttpZBaseParser {
     return _.trim(boundary[0], '"')
   }
 }
-
-module.exports = HttpZBaseParser

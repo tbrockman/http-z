@@ -1,13 +1,13 @@
-const _ = require('lodash')
-const sinon = require('sinon')
-const should = require('should')
-const nassert = require('n-assert')
-const HttpZConsts = require('../../src/consts')
-const HttpZError = require('../../src/error')
-const RequestBuilder = require('../../src/builders/request')
+import _ from 'lodash'
+import sinon from 'sinon'
+import should from 'should'
+import nassert from 'n-assert'
+import * as HttpZConsts from '../../src/consts.js'
+import HttpZError from '../../src/error.js'
+import RequestBuilder from '../../src/builders/request.js'
 
 describe('builders / request', () => {
-  function getBuilderInstance(exRequestModel, opts = {}) {
+  function getBuilderInstance(exRequestModel?: any, opts = {}) {
     let requestModel = _.extend(
       {
         method: 'get',
@@ -25,13 +25,14 @@ describe('builders / request', () => {
     })
 
     afterEach(() => {
+      //@ts-ignore
       RequestBuilder.prototype.build.restore()
     })
 
     it('should create instance of RequestBuilder and call instance.build', () => {
       let model = {}
       let expected = 'ok'
-
+      //@ts-ignore
       RequestBuilder.prototype.build.returns('ok')
 
       let actual = RequestBuilder.build(model)

@@ -1,10 +1,11 @@
-const sinon = require('sinon')
-const should = require('should')
-const nassert = require('n-assert')
-const HttpZError = require('../../src/error')
-const builder = require('../../src/builders')
-const RequestBuilder = require('../../src/builders/request')
-const ResponseBuilder = require('../../src/builders/response')
+// test/builders/builders-spec.ts
+import sinon from 'sinon';
+import should from 'should';
+import nassert from 'n-assert';
+import HttpZError from '../../src/error';
+import builder from '../../src/builders';
+import RequestBuilder from '../../src/builders/request.js';
+import ResponseBuilder from '../../src/builders/response.js';
 
 describe('builders / index', () => {
   beforeEach(() => {
@@ -13,6 +14,7 @@ describe('builders / index', () => {
   })
 
   afterEach(() => {
+    // @ts-ignore
     RequestBuilder.build.restore()
     ResponseBuilder.build.restore()
   })
@@ -51,7 +53,7 @@ describe('builders / index', () => {
     }
     let expected = 'built-request'
     let expectedMultipleArgs = [messageModel, {}]
-
+    // @ts-ignore
     RequestBuilder.build.returns('built-request')
 
     let actual = builder(messageModel)

@@ -1,7 +1,7 @@
-const _ = require('lodash')
-const should = require('should')
-const HttpZError = require('../src/error')
-const utils = require('../src/utils')
+import _ from 'lodash'
+import should from 'should'
+import HttpZError from '../src/error.js'
+import * as utils from '../src/utils.js'
 
 describe('utils', () => {
   describe('splitByDelimiter', () => {
@@ -66,7 +66,7 @@ describe('utils', () => {
   })
 
   describe('parseUrl', () => {
-    function getDefParsedUrl(ex) {
+    function getDefParsedUrl(ex?: any) {
       return _.extend(
         {
           protocol: 'HTTP',
@@ -276,7 +276,7 @@ describe('utils', () => {
   })
 
   describe('extendIfNotUndefined', () => {
-    function getDefObject(ex) {
+    function getDefObject(ex?: any) {
       return _.extend(
         {
           name: 'John'

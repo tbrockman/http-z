@@ -1,9 +1,10 @@
-const sinon = require('sinon')
-const should = require('should')
-const nassert = require('n-assert')
-const HttpZConsts = require('../../src/consts')
-const HttpZError = require('../../src/error')
-const ResponseParser = require('../../src/parsers/response')
+import _ from 'lodash';
+import sinon from 'sinon';
+import should from 'should';
+import nassert from 'n-assert';
+import * as HttpZConsts from '../../src/consts';
+import HttpZError from '../../src/error';
+import ResponseParser from '../../src/parsers/response.js';
 
 describe('parsers / response', () => {
   function getParserInstance(...params) {

@@ -1,10 +1,10 @@
-const _ = require('lodash')
-const consts = require('../consts')
-const HttpZError = require('../error')
-const RequestParser = require('./request')
-const ResponseParser = require('./response')
+import _ from 'lodash'
+import * as consts from '../consts.js'
+import HttpZError from '../error.js'
+import RequestParser from './request.js'
+import ResponseParser from './response.js'
 
-module.exports = (rawMessage, opts = {}) => {
+export default (rawMessage, opts = {}) => {
   if (_.isNil(rawMessage)) {
     throw HttpZError.get('rawMessage is required')
   }

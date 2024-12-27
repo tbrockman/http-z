@@ -1,9 +1,17 @@
-const consts = require('../consts')
-const validators = require('../validators')
-const Base = require('./base')
+import * as consts from '../consts.js'
+import * as validators from '../validators.js'
+import Base from './base.js'
 
-class HttpZResponseBuilder extends Base {
+export default class HttpZResponseBuilder extends Base {
+
+  method: string
+  protocolVersion: string
+  statusCode: number
+  statusMessage: string
+  opts: any
+
   static build(...params) {
+    // @ts-ignore
     let instance = new HttpZResponseBuilder(...params)
     return instance.build()
   }
@@ -28,5 +36,3 @@ class HttpZResponseBuilder extends Base {
     return `${protocolVersion} ${this.statusCode} ${this.statusMessage}` + consts.EOL
   }
 }
-
-module.exports = HttpZResponseBuilder

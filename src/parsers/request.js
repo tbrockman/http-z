@@ -1,13 +1,13 @@
-const _ = require('lodash')
-const consts = require('../consts')
-const HttpZError = require('../error')
-const utils = require('../utils')
-const validators = require('../validators')
-const Base = require('./base')
+import _ from 'lodash'
+import * as consts from '../consts.js'
+import HttpZError from '../error.js'
+import * as utils from '../utils.js'
+import * as validators from '../validators.js'
+import Base from './base.js'
 
 const SUPER_RANDOM_HOST = 'superrandomhost28476561927456.com'
 
-class HttpZRequestParser extends Base {
+export default class HttpZRequestParser extends Base {
   static parse(...params) {
     let instance = new HttpZRequestParser(...params)
     return instance.parse()
@@ -131,5 +131,3 @@ class HttpZRequestParser extends Base {
     return model
   }
 }
-
-module.exports = HttpZRequestParser

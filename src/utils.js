@@ -1,7 +1,7 @@
-const _ = require('lodash')
-const validators = require('./validators')
+import _ from 'lodash'
+import * as validators from './validators.js'
 
-exports.splitByDelimiter = (str, delimiter) => {
+export const splitByDelimiter = (str, delimiter) => {
   if (_.isEmpty(str)) {
     return []
   }
@@ -18,7 +18,7 @@ exports.splitByDelimiter = (str, delimiter) => {
   return res
 }
 
-exports.isAbsoluteUrl = url => {
+export const isAbsoluteUrl = url => {
   // Don't match Windows paths `c:\`
   if (/^[a-zA-Z]:\\/.test(url)) {
     return false
@@ -29,7 +29,7 @@ exports.isAbsoluteUrl = url => {
   return /^[a-zA-Z][a-zA-Z\d+\-.]*:/.test(url)
 }
 
-exports.parseUrl = (url, host) => {
+export const parseUrl = (url, host) => {
   if (!host) {
     host = url
     url = null
@@ -53,7 +53,7 @@ exports.parseUrl = (url, host) => {
 }
 
 // eslint-disable-next-line max-params
-exports.generateUrl = (protocol, host, port, path, params) => {
+export const generateUrl = (protocol, host, port, path, params) => {
   let result = ''
   if (host) {
     result += protocol.toLowerCase() + '://' + host
@@ -61,44 +61,44 @@ exports.generateUrl = (protocol, host, port, path, params) => {
       result += ':' + port
     }
   }
-  let pathWithParams = exports.generatePath(path, params)
+  let pathWithParams = generatePath(path, params)
   result += pathWithParams
 
   return result
 }
 
-exports.generatePath = (path, params) => {
+export const generatePath = (path, params) => {
   if (_.isEmpty(params)) {
     return path
   }
-  let paramPairs = exports.convertParamsArrayToPairs(params)
+  let paramPairs = convertParamsArrayToPairs(params)
 
   return path + '?' + new URLSearchParams(paramPairs).toString()
 }
 
-exports.convertParamsArrayToPairs = params => {
+export const convertParamsArrayToPairs = params => {
   validators.validateArray(params, 'params')
 
-  return _.map(params, ({ name, value }) => [name, exports.getEmptyStringForUndefined(value)])
+  return _.map(params, ({ name, value }) => [name, getEmptyStringForUndefined(value)])
 }
 
-exports.prettifyHeaderName = name => {
+export const prettifyHeaderName = name => {
   return _.chain(name).split('-').map(_.capitalize).join('-').value()
 }
 
-exports.getEmptyStringForUndefined = val => {
+export const getEmptyStringForUndefined = val => {
   if (_.isUndefined(val)) {
     return ''
   }
   return val
 }
 
-exports.extendIfNotUndefined = (obj, fieldName, fieldValue) => {
+export const extendIfNotUndefined = (obj, fieldName, fieldValue) => {
   if (!_.isUndefined(fieldValue)) {
     obj[fieldName] = fieldValue
   }
 }
 
-exports.getLibVersion = () => {
+export const getLibVersion = () => {
   return '7.1.1'
 }

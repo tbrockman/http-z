@@ -1,13 +1,13 @@
-const _ = require('lodash')
-const sinon = require('sinon')
-const should = require('should')
-const nassert = require('n-assert')
-const HttpZConsts = require('../../src/consts')
-const HttpZError = require('../../src/error')
-const RequestParser = require('../../src/parsers/request')
+import _ from 'lodash';
+import sinon from 'sinon';
+import should from 'should';
+import nassert from 'n-assert';
+import * as HttpZConsts from '../../src/consts.js';
+import HttpZError from '../../src/error.js';
+import RequestParser from '../../src/parsers/request.js';
 
 describe('parsers / request', () => {
-  function getParserInstance(rawMessage, opts = {}) {
+  function getParserInstance(rawMessage?: any, opts = {}) {
     return new RequestParser(rawMessage, opts)
   }
 
@@ -169,7 +169,7 @@ describe('parsers / request', () => {
       should(parser.params).eql(expected.params)
     }
 
-    function getDefaultExpected(ex) {
+    function getDefaultExpected(ex?: any) {
       let def = {
         method: 'GET',
         protocolVersion: 'HTTP/1.1',

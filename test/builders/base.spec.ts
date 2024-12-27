@@ -1,13 +1,14 @@
-const _ = require('lodash')
-const sinon = require('sinon')
-const should = require('should')
-const nassert = require('n-assert')
-const HttpZConsts = require('../../src/consts')
-const HttpZError = require('../../src/error')
-const BaseBuilder = require('../../src/builders/base')
+import _ from 'lodash'
+import sinon from 'sinon';
+import should from 'should';
+import nassert from 'n-assert';
+import * as HttpZConsts from '../../src/consts.js';
+import HttpZError from '../../src/error.js';
+import BaseBuilder from '../../src/builders/base.js';
 
 describe('builders / base', () => {
   function getBuilderInstance(...params) {
+    // @ts-ignore
     return new BaseBuilder(...params)
   }
 
@@ -76,6 +77,7 @@ describe('builders / base', () => {
 
     it('should throw error when instance.headers contains header with value that is not a string', () => {
       let headers = getDefaultHeaders()
+      // @ts-ignore
       headers[2].value = 25
       let expected = HttpZError.get('header.value must be a string', 'header index: 2')
 
@@ -110,7 +112,7 @@ describe('builders / base', () => {
 
   describe('_generateBodyRows', () => {
     // eslint-disable-next-line object-curly-spacing
-    function test({ body, expected, expectedFnArgs = {} }) {
+    function test({ body, expected, expectedFnArgs = {} }: any) {
       let builder = getBuilderInstance({ body })
       sinon.stub(builder, '_processTransferEncodingChunked')
       sinon.stub(builder, '_generateFormDataBody').returns('FormDataBody')
@@ -271,6 +273,7 @@ describe('builders / base', () => {
 
     it('should throw error when instance.body.params is not array', () => {
       let body = getDefaultBody()
+      // @ts-ignore
       body.params = 'params'
       let expected = HttpZError.get('body.params must be an array')
 
@@ -289,6 +292,7 @@ describe('builders / base', () => {
 
     it('should throw error when instance.body.boundary is not a string', () => {
       let body = getDefaultBody()
+      // @ts-ignore
       body.boundary = 12345
       let expected = HttpZError.get('body.boundary must be a string')
 
@@ -316,6 +320,7 @@ describe('builders / base', () => {
 
     it('should not throw error when instance.body.params contains param with empty name and type is not form-data', () => {
       let body = getDefaultBody()
+      // @ts-ignore
       body.params[0].type = 'inline'
       body.params[0].name = ''
 
@@ -358,7 +363,7 @@ describe('builders / base', () => {
   })
 
   describe('_generateUrlencodedBody', () => {
-    function getDefaultBody(params) {
+    function getDefaultBody(params?: any) {
       return {
         params
       }

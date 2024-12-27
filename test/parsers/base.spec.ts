@@ -1,9 +1,10 @@
-const sinon = require('sinon')
-const should = require('should')
-const nassert = require('n-assert')
-const HttpZConsts = require('../../src/consts')
-const HttpZError = require('../../src/error')
-const BaseParser = require('../../src/parsers/base')
+// test/parsers/base-spec.ts
+import sinon from 'sinon';
+import should from 'should';
+import nassert from 'n-assert';
+import * as HttpZConsts from '../../src/consts';
+import HttpZError from '../../src/error';
+import BaseParser from '../../src/parsers/base';
 
 describe('parsers / base', () => {
   function getParserInstance(...params) {
@@ -103,7 +104,7 @@ describe('parsers / base', () => {
 
   describe('_parseBodyRows', () => {
     // eslint-disable-next-line object-curly-spacing
-    function test({ headers, bodyRows, expected, expectedFnArgs = {} }) {
+    function test({ headers, bodyRows, expected, expectedFnArgs = {} }: any) {
       let parser = getParserInstance()
       sinon.stub(parser, '_processTransferEncodingChunked')
       sinon.stub(parser, '_parseFormDataBody').callsFake(() => {

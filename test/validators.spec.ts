@@ -1,6 +1,6 @@
-const should = require('should')
-const HttpZError = require('../src/error')
-const validators = require('../src/validators')
+import should from 'should'
+import HttpZError from '../src/error.js'
+import * as validators from '../src/validators.js'
 
 describe('validators', () => {
   function validateRequired(fn, name) {

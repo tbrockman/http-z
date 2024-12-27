@@ -1,12 +1,19 @@
-const _ = require('lodash')
-const consts = require('../consts')
-const validators = require('../validators')
-const utils = require('../utils')
-const HttpZError = require('../error')
-const Base = require('./base')
+import _ from 'lodash';
+import * as consts from '../consts';
+import * as validators from '../validators';
+import * as utils from '../utils';
+import HttpZError from '../error';
+import Base from './base';
 
-class HttpZRequestBuilder extends Base {
+export default class HttpZRequestBuilder extends Base {
+
+  method: string
+  protocolVersion: string
+  target: string
+  opts: any
+
   static build(...params) {
+    // @ts-ignore
     let instance = new HttpZRequestBuilder(...params)
     return instance.build()
   }
@@ -18,6 +25,14 @@ class HttpZRequestBuilder extends Base {
     this.target = target
     this.opts = opts
   }
+
+  // constructor(info: RequestInfo, { method, headers, body }: RequestInit, opts?: any) {
+  //   super({ headers, body })
+  //   this.method = method
+  //   this.protocolVersion = consts.http.protocolVersions.http11
+  //   this.target = typeof info === 'string' ? info : info.url
+  //   this.opts = opts
+  // }
 
   build() {
     return '' + this._generateStartRow() + this._generateHeaderRows() + consts.EOL + this._generateBodyRows()
@@ -43,5 +58,3 @@ class HttpZRequestBuilder extends Base {
     return super._generateHeaderRows()
   }
 }
-
-module.exports = HttpZRequestBuilder
